@@ -1,0 +1,245 @@
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width" />
+	<!-- FHWEB03 -->
+	<title>Palm Beach Portal Login</title>
+	<link rel="stylesheet" type="text/css" href="1.css" />
+	<link rel="stylesheet" type="text/css" href="2.css" />
+	<link rel="stylesheet" type="text/css" href="3.css" />
+	<link rel="stylesheet" type="text/css" href="4.css" />
+
+	<script src="11.js"></script>
+
+	<script src="21.js"></script>
+
+	<script language="javascript" type="text/javascript" src="31.min.js"></script>
+	<script language="javascript" type="text/javascript" src="41.js"></script>
+	<script language="javascript" type="text/javascript" src="51.js"></script>
+	
+</head>
+<body class="loaded">
+	
+<div class='container'>	
+	<div class='login-form form color'>
+		<div class='loginheader' style="padding:15px;margin-bottom:20px;">
+			<img src="pb_logo.png" alt="Image: PB Logo" />
+		</div>
+		
+
+<form action="https://mysdpbc.org" id="login" method="post"><input name="__RequestVerificationToken" type="hidden" value="eNXOaha3h2jLHbotD_JYj9XsFcYX64rExJMBxZLhnTwB4p2uFSwVf9cenQ25Vvlr6ump5M4KndXPwA4Sbw5jWaWCDhpyxadqcDFh7QnwVGc1" /><input id="RedirectUrl" name="RedirectUrl" type="hidden" value="/sso/portal" />	<div id="logon">
+		<div id="username-logon">		
+			<div class='form-group'>
+				<div class='icon-input'>
+					<input type="text" name="Username" id="Username" class="text" placeholder="Network Username" autocomplete="off" />
+					<i class='ion-android-person'></i>
+				</div>
+			</div>
+			<div class='form-group'>
+				<div class='icon-input button-input'>
+					<input type="password" name="Password" id="Password" class="text" placeholder="Password" autocomplete="off" />
+					<i class='ion-lock-combination'></i>
+					<!-- <a class="input-btn" data-toggle="tooltip" href="/_authn/Logon/ChangePassword?Length=5" title="Forgot Password?">Home</a> -->
+					<!-- <a class='input-btn' data-toggle='tooltip' title='Forgot Password?'>?</a> -->
+				</div>
+			</div>
+			<div class='form-group'>
+				<div class='forgot'>
+					<span></span>
+					<label>
+						<!-- <a href="/_authn/Logon/ChangePassword">Home</a> -->
+						<a href="https://id.palmbeachschools.org/" target="_blank">Forgot/Change Password (Employees and Third Parties Only)</a>
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div id="camera" class='form-group' style='display:none;'>
+			<video id="preview" style="width: 100%;"></video>
+		</div>
+		<div class='form-group'>
+			<input id="login-button" type="submit" class="btn btn-block" value="Login" />
+			<input id="badgeButton" type="button" class="btn btn-block" value="Badge Login" onclick="showQrScanner()" style="display:none;"/>
+			<input type="hidden" name="AuthenticationBadgeToken" id="AuthenticationBadgeToken" class="hidden" />
+		</div>
+		<div id="validateMessage" class="form-group">
+			<span class="field-validation-valid text-danger" data-valmsg-for="ErrorMessage" data-valmsg-replace="true"></span>
+		</div>
+		<div id="warningMessage" class="form-group">
+			<span class="text-danger">
+				
+			</span>
+		</div>
+	</div>
+	<div id="pleaseWaitLogon">
+		<span>Please wait while we access your account...</span>
+		<br />
+	</div>
+<div class="formlinks" style="display:flex; flex-wrap: wrap; justify-content:center; color:#515151">
+<div style="width:175px; height:50px; float:left;">
+      <img src="customerservice.png" style="padding-right:15px; float:left; margin-top:8px;"><strong>IT Service Desk</strong><br><small><a href="tel:1-561-242-4100" style="padding:0px;">(561) 242-4100</a></small>  
+</div>
+<div style="flex-basis:100%; width:0px; height:0px; overflow: hidden;"></div>
+<div style="width:175px; height:50px; margin-top:1rem; float:left;">
+      <img src="bullying_hotline.png" style="padding-right:15px; float:left; margin-top:8px;"><strong>Bullying Hotline</strong><br><small><a href="tel:1-561-434-8200" style="padding:0px;">(561) 434-8200</a></small>  
+</div>
+<div style="flex-basis:100%; width:0px; height:0px; overflow: hidden;"></div>
+<div style="height: 70px;margin-top:1rem;float:left;text-align:center;">
+	<strong>&nbsp;&nbsp;&nbsp;&nbsp;Department of Children &amp;<br> Families Abuse Hotline</strong><br><small><a href="tel:1-800-962-2873" style="padding:0px;">(800) 962-2873</a></small>
+</div>
+</div>
+</form>
+
+	</div>
+	<div class="text-center" style="font-size: 8pt; color:#ffffff;">
+		<br />
+		<img src="enboard_link.png" alt="Enboard" /> powered by Enboard
+	</div>
+</div>
+	
+
+	<script language="javascript" type="text/javascript" src="61.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			if (window.opener != null && !window.opener.closed) {
+				if (window.opener.location.hostname.toLowerCase() === 'portal.schooldomain.org') {
+					window.opener.location.href = "https://portal.schooldomain.org/_auth/login.aspx?ru====";
+					window.close();
+				}
+			}
+
+			$('form').submit(function (event) {
+				//try {
+				//    ProcessSSO();
+				//} catch (e) {
+				//    alert(e);
+				//    event.preventDefault();
+				//}
+				$("#pleaseWaitLogon").show();
+				$("#logon").hide("drop", { direction: "right" }, "slow");
+			});
+
+			$("#pleaseWaitLogon").hide();
+			$("#pleaseWaitChange").hide();
+
+			setTimeout(function () {
+				$('#Username').focus();
+			}, 2000);
+
+			setTimeout(function () {
+				$('#validateMessage').fadeOut(3000,
+					function () {
+						$(this).hide();
+					});
+			}, 10000);
+		});
+
+		var scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+		var camerasChecked = false;
+		var hasCamera = false;
+		var cameras = null;
+		var warningElement = $($('#warningMessage').children('span')[0]);
+
+		function showCamera() {
+			$('#username-logon').hide();
+			$('#login-button').hide();
+			$('#camera').show();
+			scanner.start(cameras[0]);
+			$('#badgeButton').val('Close');
+		}
+
+		function hideCamera() {
+			$('#camera').hide();
+			$('#username-logon').show();
+			$('#login-button').show();
+			scanner.stop(cameras[0]);
+			$('#badgeButton').val('Badge Login');
+		}
+
+		function showQrScanner() {
+			if (!camerasChecked) {
+				Instascan.Camera.getCameras().then(function (parCameras) {
+					if (parCameras.length > 0) {
+						hasCamera = true;
+						cameras = parCameras;
+						scanner.addListener('scan',
+							function (content) {
+								console.log(content);
+
+								$('#AuthenticationBadgeToken').val(content);
+								$('#login').submit();
+
+							}
+						);
+
+						showCamera();
+
+					} else {
+						$('#badgeButton').hide();
+						warningElement.text("No cameras found.");
+						console.info('No cameras found.');
+					}
+					camerasChecked = true;
+				}).catch(function (e) {
+					if (e.name === "NotAllowedError") {
+						warningElement.text("Browser camera usage blocked.");
+					}
+					if (e.name === "NotFoundError") {
+						warningElement.text("No cameras found.");
+					}
+
+					console.info(e);
+				});
+			}
+			else {
+				if (hasCamera) {
+					if ($('#username-logon').is(':visible')) {
+						showCamera();
+					} else {
+						hideCamera();
+					}
+				}
+			}
+		}
+		
+		//SDPBC Customization								
+		$("#login-button").on("click", function() {
+			var pbregex = /[pb]{2}\d{8}/gi;
+			if($("#Username").val().indexOf('@') >= 0) {
+				$("#usernameWarning").remove();
+				$("#Username").val("");
+				$("#Password").val("");
+				$("#Username").focus();
+				$("#logon").prepend('<div id="usernameWarning" class="alert alert-danger" role="alert"><strong>An email address cannot be used to sign in!</strong><br /><small>You must use the same user ID you would use to log into a district computer.  If you are a student, use your student number beginning with an S (PB numbers will not work).</small></div>');
+				return false;				
+			}
+			if($("#Username").val().match(pbregex)) {
+				$("#Username").val($("#Username").val().replace(/^.{2}/g, 's'));				
+			}
+		});		
+						
+		//var chromeOS = /(CrOS)/.test(navigator.userAgent);
+		//if(chromeOS)
+		//	$("#badgeButton").show();
+			
+		if(getURLParam('ru') !== 'L3Nzby9wb3J0YWw=') {
+			setTimeout(function() { window.location.href = 'https://www.mysdpbc.org/';}, 300000);
+		}
+		
+		function getURLParam(param) {
+		    var results = new RegExp('[\?&]' + param + '=([^&#]*)')
+                .exec(window.location.search);
+			return (results !== null) ? results[1] || 0 : false;		
+		}
+	</script>
+
+</body>
+</html>
+
+

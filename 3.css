@@ -1,0 +1,33 @@
+/*Layout*/
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:600,400);
+*{
+	margin:0;
+	padding:0;
+	outline:none;
+	font-family: 'Titillium Web', sans-serif;
+}
+html {
+	height:100%;
+}
+body{
+	padding-top:0px;
+	padding-bottom:0px;
+	margin-top:50px;
+	background-image: url("https://www.mysdpbc.org/_authn/images/pb_bg.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    /*min-height: 109.6vh; 
+    min-width:  65vw; */
+}
+.text-white,
+.text-white *{
+	color:#FFF;
+}
+.block{
+	display:block;
+	width:100%;
+}
